@@ -187,7 +187,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({
 			<br />
 			{trimmedAudio && (
 				<audio
-					src={url}
+					src={URL.createObjectURL(trimmedAudio as Blob)}
 					controls
 				>
 					Your browser does not support the audio element.
