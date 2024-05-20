@@ -87,7 +87,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({ audioFile, onCrop }) => {
 					});
 					console.log("🚀 ~ ws.on ~ wsRegions:", wsRegions);
 					{
-						let activeRegion = null;
+						let activeRegion:any = null;
 						wsRegions.on("region-in", (region) => {
 							setStartTime(region?.start);
 							activeRegion = region;
@@ -107,7 +107,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({ audioFile, onCrop }) => {
 							e.stopPropagation(); // prevent triggering a click on the waveform
 							activeRegion = region;
 							region.play();
-							region.setOptions({ color: "ffffffaa" });
+							// region.setOptions({ color: "ffffffaa" });
 						});
 						// Reset the active region when the user clicks anywhere in the waveform
 						ws.on("interaction", () => {
@@ -186,7 +186,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({ audioFile, onCrop }) => {
 				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 				onClick={() => {
 					// Create a new blob URL
-					const url = URL.createObjectURL(trimmedAudio);
+					const url = URL.createObjectURL(trimmedAudio as Blob);
 
 					// Create a new anchor element
 					const link = document.createElement("a");
