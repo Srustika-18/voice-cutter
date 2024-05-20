@@ -78,6 +78,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({
 				height={100}
 				waveColor={"#77dd77"}
 				dragToSeek
+				autoplay
 				url={url}
 				onDecode={(ws) => {
 					const wsRegions = ws.registerPlugin(RegionsPlugin.create());
