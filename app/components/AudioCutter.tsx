@@ -83,12 +83,12 @@ const AudioCutter: React.FC<AudioCutterProps> = ({
 					const wsRegions = ws.registerPlugin(RegionsPlugin.create());
 					console.log("🚀 ~ wsRegions:", wsRegions);
 					wsRegions.addRegion({
-						start: 1,
-						end: 6,
+						start: 0,
+						end: 100000,
 						color: "rgba(255, 255, 255, 0.25)",
 						content: "Cramped region",
 						minLength: 1,
-						maxLength: 10,
+						// maxLength: 10,
 					});
 					console.log("🚀 ~ ws.on ~ wsRegions:", wsRegions);
 					{
