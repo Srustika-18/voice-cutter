@@ -7,9 +7,14 @@ import RegionsPlugin from "wavesurfer.js/dist/plugins/regions.esm.js";
 interface AudioCutterProps {
 	audioFile: File;
 	onCrop: (trimmedAudio: Blob) => void;
+	url: string;
 }
 
-const AudioCutter: React.FC<AudioCutterProps> = ({ audioFile, onCrop }) => {
+const AudioCutter: React.FC<AudioCutterProps> = ({
+	audioFile,
+	onCrop,
+	url,
+}) => {
 	const [startTime, setStartTime] = useState<number>(0);
 	const [endTime, setEndTime] = useState<number>(0);
 	const [duration, setDuration] = useState<number>(0);
@@ -73,7 +78,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({ audioFile, onCrop }) => {
 				height={100}
 				waveColor={"#77dd77"}
 				// dragToSeek
-				url={URL.createObjectURL(audioFile)}
+				url={url}
 				onDecode={(ws) => {
 					const wsRegions = ws.registerPlugin(RegionsPlugin.create());
 					console.log("🚀 ~ wsRegions:", wsRegions);
@@ -175,7 +180,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({ audioFile, onCrop }) => {
 			<br />
 			{trimmedAudio && (
 				<audio
-					src={URL.createObjectURL(trimmedAudio)}
+					src={url}
 					controls
 				>
 					Your browser does not support the audio element.

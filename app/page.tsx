@@ -34,6 +34,7 @@ export default function Home() {
 				<AudioCutter
 					audioFile={audioFile}
 					onCrop={handleCrop}
+					url={URL.createObjectURL(audioFile)}
 				/>
 			)}
 			{/* {croppedAudio && <AudioPlayer audioData={croppedAudio} />} */}
