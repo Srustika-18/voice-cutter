@@ -73,7 +73,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({ audioFile, onCrop }) => {
 				height={100}
 				waveColor={"#77dd77"}
 				// dragToSeek
-				url={"/ReelAudio-14104.mp3"}
+				url={URL.createObjectURL(audioFile)}
 				onDecode={(ws) => {
 					const wsRegions = ws.registerPlugin(RegionsPlugin.create());
 					console.log("🚀 ~ wsRegions:", wsRegions);
@@ -87,7 +87,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({ audioFile, onCrop }) => {
 					});
 					console.log("🚀 ~ ws.on ~ wsRegions:", wsRegions);
 					{
-						let activeRegion:any = null;
+						let activeRegion: any = null;
 						wsRegions.on("region-in", (region) => {
 							setStartTime(region?.start);
 							activeRegion = region;
