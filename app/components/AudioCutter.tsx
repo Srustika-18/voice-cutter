@@ -77,7 +77,7 @@ const AudioCutter: React.FC<AudioCutterProps> = ({
 			<WavesurferPlayer
 				height={100}
 				waveColor={"#77dd77"}
-				// dragToSeek
+				dragToSeek
 				url={url}
 				onDecode={(ws) => {
 					const wsRegions = ws.registerPlugin(RegionsPlugin.create());
@@ -98,6 +98,11 @@ const AudioCutter: React.FC<AudioCutterProps> = ({
 							setEndTime(region?.end);
 							activeRegion = region;
 						});
+						wsRegions.on('region-updated', (region) => {
+							setStartTime(region?.start);
+							console.log('Updated region', region)
+							setEndTime(region?.end);
+						  })
 						wsRegions.on("region-out", (region) => {
 							console.log("region-out", region?.end);
 							setStartTime(region?.start);
