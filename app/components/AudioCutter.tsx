@@ -95,10 +95,12 @@ const AudioCutter: React.FC<AudioCutterProps> = ({
 						let activeRegion: any = null;
 						wsRegions.on("region-in", (region) => {
 							setStartTime(region?.start);
+							setEndTime(region?.end);
 							activeRegion = region;
 						});
 						wsRegions.on("region-out", (region) => {
 							console.log("region-out", region?.end);
+							setStartTime(region?.start);
 							setEndTime(region?.end);
 							if (activeRegion === region) {
 								if (true) {
